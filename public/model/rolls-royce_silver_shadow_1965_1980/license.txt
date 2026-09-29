@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rolls-Royce Silver Shadow 1965 1980
+* source:	https://sketchfab.com/3d-models/rolls-royce-silver-shadow-1965-1980-aa77c85a6d5049cfad067fb4a40af97d
+* author:	ig.ghazigfx (https://sketchfab.com/ig.ghazigfx)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rolls-Royce Silver Shadow 1965 1980" (https://sketchfab.com/3d-models/rolls-royce-silver-shadow-1965-1980-aa77c85a6d5049cfad067fb4a40af97d) by ig.ghazigfx (https://sketchfab.com/ig.ghazigfx) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
