@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rolls-Royce Three.js Showcase</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Three.js is installed with npm. The import map keeps imports short. -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Three.js renders everything inside this canvas. -->
+  <canvas id="three-scene" aria-label="Interactive 3D Rolls-Royce showcase"></canvas>
+
+  <!-- Loading screen. loadingScreen.js only updates its progress. -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-card">
+      <div class="loading-kicker">Three.js WebGL Showcase</div>
+      <h1>Rolls-Royce</h1>
+      <div class="loading-subtitle">Silver Shadow</div>
+      <div class="loading-row"><span>Loading vehicle</span><span id="loading-percent">0%</span></div>
+      <div class="loading-track"><div id="loading-progress"></div></div>
+      <div id="loading-error" class="loading-error"></div>
+    </div>
+  </div>
+
+  <!-- Desktop-only controls. There are intentionally no mobile layout rules. -->
+  <div id="app-ui" class="visualizer-ui">
+    <div class="brand">
+      <strong>Rolls-Royce</strong>
+      <span>Interactive WebGL Showcase</span>
+    </div>
+
+    <div class="controls">
+      <button id="cruise-button" type="button">Cruise</button>
+      <button id="mode-button" type="button">Night</button>
+      <button id="music-button" type="button">Music</button>
+
+      <div class="paint-control">
+        <button id="paint-button" type="button">Color</button>
+        <div id="paint-picker" class="paint-picker"></div>
+      </div>
+
+      <button id="details-button" type="button">Details</button>
+      <button id="reset-button" type="button">Reset</button>
+    </div>
+
+    <div class="hint">W/S speed • A/D steer • Arrow keys camera • Drag orbit • Wheel zoom</div>
+    <div id="drive-status" class="drive-status">Showroom mode</div>
+  </div>
+
+  <!-- Part details appear here when Details mode is active. -->
+  <div id="detail-points" class="car-detail-points"></div>
+  <div id="detail-card" class="car-detail-card">
+    <small>Selected part</small>
+    <strong></strong>
+    <span></span>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

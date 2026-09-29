@@ -1,0 +1,117 @@
+/* =====================================================
+   GLOBAL / DESKTOP LAYOUT
+   No mobile media queries are used in this project.
+   ===================================================== */
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: #cfe7f2; font-family: Arial, sans-serif; color: #15191d; }
+canvas { display: block; width: 100%; height: 100%; outline: none; }
+button { font: inherit; }
+
+/* =====================================================
+   LOADING SCREEN
+   ===================================================== */
+.loading-screen {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  background: #c9c8c4;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+.loading-screen.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-card { width: 390px; text-align: center; }
+.loading-kicker, .loading-subtitle, .loading-row {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .55;
+}
+.loading-card h1 { margin: 10px 0 6px; font: 400 42px Georgia, serif; }
+.loading-row { display: flex; justify-content: space-between; margin-top: 30px; }
+.loading-track { height: 2px; margin-top: 8px; background: rgba(20,20,20,.16); overflow: hidden; }
+#loading-progress { width: 0; height: 100%; background: #15191d; transition: width .2s ease; }
+.loading-error { display: none; margin-top: 16px; color: #8b1e24; font-size: 12px; }
+.loading-screen.has-error .loading-error { display: block; }
+
+/* =====================================================
+   MAIN UI / RIGHT-SIDE CONTROLS
+   ===================================================== */
+.visualizer-ui {
+  position: fixed; inset: 0; z-index: 20; pointer-events: none;
+  opacity: 0; color: #15191d; transition: opacity .5s ease, color .4s ease;
+}
+.visualizer-ui.is-ready { opacity: 1; }
+.visualizer-ui.is-night { color: #f2f4f6; }
+
+.brand { position: absolute; top: 28px; left: 30px; }
+.brand strong { display: block; font: 400 34px Georgia, serif; }
+.brand span { display: block; margin-top: 6px; font-size: 9px; font-weight: 700; letter-spacing: .20em; text-transform: uppercase; opacity: .55; }
+
+.controls {
+  position: absolute; top: 50%; right: 28px; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 9px; pointer-events: auto;
+}
+.controls button {
+  width: 86px; height: 40px; border: 1px solid rgba(20,22,24,.17); border-radius: 20px;
+  background: rgba(248,247,243,.86); color: #15191d; cursor: pointer;
+  font-size: 10px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(20,22,24,.10);
+  transition: transform .18s ease, background .3s ease, color .3s ease;
+}
+.controls button:hover { transform: scale(1.05); background: #fff; }
+.controls button.is-active { background: #15191d; color: #fff; }
+.is-night .controls button { background: rgba(25,30,37,.88); color: #f2f4f6; border-color: rgba(255,255,255,.14); }
+.is-night .controls button.is-active { background: #f2f4f6; color: #15191d; }
+
+.paint-control { position: relative; }
+.paint-picker {
+  position: absolute; top: 50%; right: 98px; transform: translate(10px,-50%);
+  display: flex; gap: 9px; padding: 10px; border-radius: 24px;
+  background: rgba(248,247,243,.94); border: 1px solid rgba(20,22,24,.12);
+  opacity: 0; visibility: hidden; transition: .18s ease;
+}
+.paint-picker.is-open { opacity: 1; visibility: visible; transform: translate(0,-50%); }
+.is-night .paint-picker { background: rgba(25,30,37,.94); border-color: rgba(255,255,255,.14); }
+.paint-picker .paint-swatch { width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 2px solid rgba(80,80,80,.35); }
+.paint-picker .paint-swatch.is-active { border-color: #fff; box-shadow: 0 0 0 2px #555; }
+
+.hint { position: absolute; left: 30px; bottom: 25px; font-size: 9px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; opacity: .58; }
+.drive-status { position: absolute; left: 50%; bottom: 25px; transform: translateX(-50%); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .62; }
+
+/* =====================================================
+   CAR DETAIL POINTS
+   Change --point-size if you want smaller/larger dots.
+   ===================================================== */
+.car-detail-points {
+  --point-size: 12px;
+  position: fixed; inset: 0; z-index: 27; pointer-events: none;
+  opacity: 0; visibility: hidden; transition: opacity .2s ease;
+}
+.car-detail-points.is-active { opacity: 1; visibility: visible; }
+.car-detail-point {
+  position: absolute; width: var(--point-size); height: var(--point-size); padding: 0;
+  border: 0; border-radius: 50%; background: #faf9f4; cursor: pointer; pointer-events: auto;
+  box-shadow: 0 0 0 1px rgba(12,16,20,.4), 0 3px 8px rgba(10,14,18,.2);
+  transform: translate(-50%,-50%) scale(.8); opacity: 0;
+  transition: transform .16s ease, opacity .16s ease;
+}
+.car-detail-point::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: #15191d; }
+.car-detail-point::after {
+  content: ''; position: absolute; inset: -4px; border: 1px solid rgba(21,25,29,.3); border-radius: 50%;
+  animation: detailPulse 1.8s ease-out infinite;
+}
+.car-detail-point.is-visible { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+.car-detail-point:hover { transform: translate(-50%,-50%) scale(1.25); }
+.car-detail-points.is-night .car-detail-point { background: #20262d; box-shadow: 0 0 0 1px rgba(255,255,255,.7), 0 3px 9px rgba(0,0,0,.4); }
+.car-detail-points.is-night .car-detail-point::before { background: #f2f4f5; }
+.car-detail-points.is-night .car-detail-point::after { border-color: rgba(255,255,255,.4); }
+@keyframes detailPulse { 0% { transform: scale(.7); opacity: .7; } 100% { transform: scale(1.35); opacity: 0; } }
+
+.car-detail-card {
+  position: fixed; z-index: 29; left: 50%; bottom: 34px; width: 390px;
+  transform: translate(-50%,12px); padding: 15px 17px; border-radius: 14px;
+  border: 1px solid rgba(20,22,24,.14); background: rgba(247,246,242,.96); color: #16191c;
+  box-shadow: 0 16px 45px rgba(15,18,20,.18); opacity: 0; visibility: hidden;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.car-detail-card.is-visible { opacity: 1; visibility: visible; transform: translate(-50%,0); }
+.car-detail-card.is-night { background: rgba(20,23,28,.96); color: #f3f4f5; border-color: rgba(255,255,255,.12); }
+.car-detail-card small { display: block; margin-bottom: 5px; font-size: 8px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; opacity: .48; }
+.car-detail-card strong { display: block; margin-bottom: 6px; font-size: 14px; }
+.car-detail-card span { display: block; font-size: 12px; line-height: 1.5; opacity: .75; }

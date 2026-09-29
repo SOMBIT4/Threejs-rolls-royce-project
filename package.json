@@ -1,0 +1,12 @@
+{
+  "name": "rolls-royce-threejs-showcase",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Desktop-only Three.js car showcase with simple countryside, driving, details and day/night lighting.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  }
+}
