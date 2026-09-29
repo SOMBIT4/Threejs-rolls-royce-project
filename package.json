@@ -4,7 +4,7 @@
   "private": true,
   "description": "Desktop-only Three.js car showcase with simple countryside, driving, details and day/night lighting.",
   "scripts": {
-    "start": "node server.js"
+    "serve": "node local-server.cjs"
   },
   "dependencies": {
     "three": "^0.160.0"
