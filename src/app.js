@@ -1,18 +1,18 @@
 import * as THREE from 'three';
-import { createScene } from './scene.js';
-import { createRenderer, resizeRenderer } from './renderer.js';
-import { createCameraRig, updateCameraRig } from './camera.js';
-import { createProjectTextures } from './textures.js';
-import { createShaderMaterials, syncShader } from './shaders.js';
-import { createRoad } from './road.js';
-import { createEnvironment } from './environment.js';
-import { createLightingRig } from './lighting.js';
-import { createCar } from './car.js';
-import { createInteractionState } from './interactions.js';
-import { createAudioSystem } from './audio.js';
-import { createControls } from './controls.js';
-import { createLoadingScreen } from './loadingScreen.js';
-import { createCarPartInspector } from './partDetails.js';
+import { createScene } from '../scene.js';
+import { createRenderer, resizeRenderer } from '../renderer.js';
+import { createCameraRig, updateCameraRig } from '../camera.js';
+import { createProjectTextures } from '../textures.js';
+import { createShaderMaterials, syncShader } from '../shaders.js';
+import { createRoad } from '../road.js';
+import { createEnvironment } from '../environment.js';
+import { createLightingRig } from '../lighting.js';
+import { createCar } from '../car.js';
+import { createInteractionState } from '../interactions.js';
+import { createAudioSystem } from '../audio.js';
+import { createControls } from '../controls.js';
+import { createLoadingScreen } from '../loadingScreen.js';
+import { createCarPartInspector } from '../partDetails.js';
 
 // =====================================================
 // PROJECT SETUP
